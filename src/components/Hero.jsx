@@ -85,7 +85,7 @@ export default function Hero() {
                 <div className="space-y-8">
                     <div className="space-y-6">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                            Transforming Your Ideas into{' '}
+                            Transforming  Ideas into{' '}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 dark:from-purple-400 dark:to-blue-400">
                                 Reality
                             </span>
