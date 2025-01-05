@@ -14,7 +14,11 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
-  		colors: {}
+  		colors: {
+        primary: '#45b3fa',
+  			accent: '#93c5fd',
+  			secondary: '#8b64e6'
+      }
   	}
   },
   plugins: [
