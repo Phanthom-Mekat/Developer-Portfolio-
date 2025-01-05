@@ -29,7 +29,9 @@ const Navbar = () => {
             </li>
             <li className="py-2">
                 <NavLink
-                    to="/assignments" onClick={() => setHamburger(false)}
+                    to="/about" 
+                    
+                    onClick={() => setHamburger(false)}
                     className={({ isActive }) =>
                         `px-3 py-2 relative group ${isActive ? activeClassName : inactiveClassName}`
                     }
@@ -40,7 +42,7 @@ const Navbar = () => {
             </li>
             <li className="py-2">
                 <NavLink
-                    to="/pendingAssignment" onClick={() => setHamburger(false)}
+                    to="/projects" onClick={() => setHamburger(false)}
                     className={({ isActive }) =>
                         `px-3 py-2 relative group ${isActive ? activeClassName : inactiveClassName}`
                     }
@@ -51,7 +53,7 @@ const Navbar = () => {
             </li>
             <li className="py-2">
                 <NavLink
-                    to="/leaderboard" onClick={() => setHamburger(false)}
+                    to="/skills" onClick={() => setHamburger(false)}
                     className={({ isActive }) =>
                         `px-3 py-2 relative group ${isActive ? activeClassName : inactiveClassName}`
                     }
