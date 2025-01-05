@@ -15,9 +15,9 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
-        primary: '#45b3fa',
+        primary: '#8b64e6',
   			accent: '#93c5fd',
-  			secondary: '#8b64e6'
+  			secondary: '#45b3fa'
       }
   	}
   },
