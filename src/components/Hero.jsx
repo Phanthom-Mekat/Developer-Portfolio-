@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { TwitterIcon, InstagramIcon, GithubIcon, MailIcon, LinkedinIcon, CodeIcon, ServerIcon, DatabaseIcon } from 'lucide-react'
+import { TwitterIcon, InstagramIcon, GithubIcon, MailIcon, LinkedinIcon, CodeIcon, ServerIcon, DatabaseIcon, Facebook } from 'lucide-react'
 import { TypeAnimation } from 'react-type-animation'
 import InteractiveHoverButton from "./ui/interactive-hover-button"
 
@@ -62,14 +62,16 @@ export default function Hero() {
 
                     <div className="flex gap-4 justify-center lg:justify-start">
                         {[
-                            { icon: GithubIcon, href: "#", label: "Github" },
-                            { icon: LinkedinIcon, href: "#", label: "LinkedIn" },
-                            { icon: TwitterIcon, href: "#", label: "Twitter" },
-                            { icon: MailIcon, href: "#", label: "Email" }
+                            { icon: GithubIcon, href: "https://github.com/phanthom-Mekat",   label: "Github" },
+                            { icon: LinkedinIcon, href: "https://www.linkedin.com/in/jahidul-hossain-mekat-157874228/", label: "LinkedIn" },
+                            { icon: Facebook, href: "https://www.facebook.com/buletboy.mekat", label: "Twitter" },
+                            { icon: MailIcon, href: "mailto:jahidulhossainmekat@gmail.com", label: "Email" }
                         ].map((social, index) => (
                             <a
                                 key={index}
                                 href={social.href}
+                                target= "_blank"
+                                rel="noreferrer"
                                 className="group relative p-2 rounded-full bg-gray-800/30 hover:bg-purple-500/20 transition-all duration-300"
                                 aria-label={social.label}
                             >
