@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Sparkles, ArrowRight, Github, Globe, ArrowUpRight } from 'lucide-react'
+import { BorderBeam } from './magicui/border-beam'
 
 const ProjectShowcase = () => {
   const [hoveredProject, setHoveredProject] = useState(null)
@@ -235,10 +236,13 @@ const ProjectShowcase = () => {
                           href={project.live}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-gray-700/80 dark:text-white/80 hover:text-gray-900 dark:hover:text-white transition-colors"
+                          className="flex items-center gap-2 text-gray-700/80 dark:text-white/80 hover:text-gray-100 dark:hover:text-white transition-colors btn btn-outline border-primary  "
                         >
                           <Globe className="w-5 h-5" />
-                          <span>Live Demo</span>
+                          <span  >Live Demo
+                          <BorderBeam size={200} duration={15} delay={9} />
+                          </span>
+                          
                         </a>
                       </div>
                     </div>
