@@ -225,6 +225,7 @@ const ProjectShowcase = () => {
             </motion.div>
           ))}
         </div>
+        
       </div>
 
       <style jsx>{`

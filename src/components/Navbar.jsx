@@ -10,7 +10,7 @@ const Navbar = () => {
     const [hamburger, setHamburger] = useState(false);
     const isHome = location.pathname === "/";
 
-    const activeClassName = "font-semibold text-primary border-b-2 border-primary transition-all duration-300 hover:text-primary-dark hover:border-primary-dark";
+    const activeClassName = "font-semibold text-primary border-b-2 border-primary transition-all duration-300 hover:text-primary-dark hover:border-primary-dark   " ;
 
     const inactiveClassName = "font-medium text-gray-600 dark:text-gray-300 border-b-2 border-transparent transition-all duration-300 hover:text-primary hover:border-primary";
 
@@ -42,17 +42,6 @@ const Navbar = () => {
             </li>
             <li className="py-2">
                 <NavLink
-                    to="/projects" onClick={() => setHamburger(false)}
-                    className={({ isActive }) =>
-                        `px-3 py-2 relative group ${isActive ? activeClassName : inactiveClassName}`
-                    }
-                >
-                    Projects
-                    <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out w-11/12 mx-auto" />
-                </NavLink>
-            </li>
-            <li className="py-2">
-                <NavLink
                     to="/skills" onClick={() => setHamburger(false)}
                     className={({ isActive }) =>
                         `px-3 py-2 relative group ${isActive ? activeClassName : inactiveClassName}`
@@ -62,13 +51,25 @@ const Navbar = () => {
                     <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out w-11/12 mx-auto" />
                 </NavLink>
             </li>
+            <li className="py-2">
+                <NavLink
+                    to="/projects" onClick={() => setHamburger(false)}
+                    className={({ isActive }) =>
+                        `px-3 py-2 relative group ${isActive ? activeClassName : inactiveClassName}`
+                    }
+                >
+                    Projects
+                    <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out w-11/12 mx-auto" />
+                </NavLink>
+            </li>
+           
 
         </>
     );
 
     return (
-        <nav className={isHome ? "bg-gray-100 dark:bg-gray-900 " : undefined}>
-            <div className="navbar  md:w-11/12 mx-auto">
+        <nav className={isHome ? "bg-gray-100 sticky top-0 z-50 dark:bg-gray-900  " : undefined}>
+            <div className="navbar sticky top-0 z-50  md:w-11/12 mx-auto">
                 {/* Navbar Start */}
                 <div className="navbar-start">
                     <div className="lg:hidden">
