@@ -3,7 +3,9 @@
 import { motion } from 'framer-motion'
 import { Card } from "@/components/ui/card"
 import { GitBranch } from 'lucide-react'
-import { SiBootstrap, SiCanva, SiCss3, SiExpress, SiFigma, SiFirebase, SiGithub, SiHtml5, SiHyperskill, SiJavascript, SiMongodb, SiNodedotjs, SiReact, SiSkillshare, SiTailwindcss, SiVite, SiVsco, SiVscodium, SiZap } from 'react-icons/si'
+import { SiBootstrap, SiCanva, SiCss3, SiExpress, SiFigma, SiFirebase, SiGithub, SiHtml5, SiHyperskill, SiJavascript, SiMongodb, SiNodedotjs, SiPython, SiReact, SiSkillshare, SiTailwindcss, SiVite, SiVsco, SiVscodium, SiZap } from 'react-icons/si'
+import { FaJava } from "react-icons/fa";
+import { BorderBeam } from './magicui/border-beam'
 
 const MotionCard = motion(Card)
 
@@ -14,7 +16,6 @@ export default function Skills() {
             { name: 'CSS', icon: SiCss3, color: '#1572B6' },
             { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
             { name: 'Bootstrap', icon: SiBootstrap, color: '#7952B3' },
-            { name: 'Vite', icon: SiVite, color: '#646CFF' },
             { name: 'React', icon: SiReact, color: '#61DAFB' },
             { name: 'Javascript', icon: SiJavascript, color: '#F7DF1E' },
             { name: 'Shadcn/ui', icon: SiZap, color: '#8B5CF6' }
@@ -27,9 +28,8 @@ export default function Skills() {
         ],
         Other: [
             { name: 'Git', icon: GitBranch, color: '#F05032' },
-            { name: 'GitHub', icon: SiGithub, color: '' },
-            { name: 'VSCode', icon: SiVscodium, color: '#007ACC' },
-            { name: 'Canva', icon: SiCanva, color: '#00C4CC' },
+            { name: 'Python', icon: SiPython, color: '#007ACC' },
+            { name: 'Java', icon: FaJava , color: '#00C4CC' },
             { name: 'Figma', icon: SiFigma, color: '#F24E1E' }
         ]
     }
@@ -112,6 +112,7 @@ export default function Skills() {
                                             className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300"
                                             style={{ backgroundColor: skill.color }}
                                         />
+                                         <BorderBeam size={200} duration={15} delay={9} />
                                     </MotionCard>
                                 ))}
                             </motion.div>

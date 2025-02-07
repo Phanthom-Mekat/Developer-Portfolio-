@@ -15,10 +15,20 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
-        primary: '#8b64e6',
+  			primary: '#8b64e6',
   			accent: '#93c5fd',
   			secondary: '#45b3fa'
-      }
+  		},
+  		animation: {
+  			'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear'
+  		},
+  		keyframes: {
+  			'border-beam': {
+  				'100%': {
+  					'offset-distance': '100%'
+  				}
+  			}
+  		}
   	}
   },
   plugins: [
