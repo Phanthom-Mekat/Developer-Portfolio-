@@ -1,199 +1,169 @@
-'use client'
-
-import React, { useRef, useState } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { 
-    Mail, 
-    Phone, 
-    Send, 
-    Copy, 
-    Check, 
-    MessageCircle, 
-    Linkedin, 
-    Github, 
-    Twitter 
-} from 'lucide-react'
+"use client"
+import { useState } from "react"
+import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import QRCode from 'qrcode.react'
+import { Badge } from "@/components/ui/badge"
+import { 
+  Mail, Phone, MessageCircle, Linkedin, Github, Twitter, 
+  Copy, CheckCheck, Sparkles, Send 
+} from "lucide-react"
 
-// Contact Information (replace with your actual details)
-const CONTACT_INFO = {
-    email: 'youremail@example.com',
-    phone: '+1 (123) 456-7890',
-    whatsapp: '+1 (123) 456-7890',
-    socialLinks: {
-        linkedin: 'https://linkedin.com/in/yourprofile',
-        github: 'https://github.com/yourusername',
-        twitter: 'https://twitter.com/yourusername'
+const ContactSection = () => {
+  const [copiedField, setCopiedField] = useState(null)
+
+  const handleCopy = (text, field) => {
+    navigator.clipboard.writeText(text)
+    setCopiedField(field)
+    setTimeout(() => setCopiedField(null), 2000)
+  }
+
+  const contactInfo = [
+    {
+      icon: <Mail className="w-5 h-5" />,
+      title: "Email",
+      value: "jahidulhossainmekat@gmail.com",
+      id: "email"
+    },
+    {
+      icon: <Phone className="w-5 h-5" />,
+      title: "Phone",
+      value: "+880186760924",
+      id: "phone"
+    },
+    {
+      icon: <MessageCircle className="w-5 h-5" />,
+      title: "WhatsApp",
+      value: "+8801867609248",
+      id: "whatsapp"
     }
-}
+  ]
 
-function ContactSection() {
-    const ref = useRef(null)
-    const isInView = useInView(ref, { once: true })
-    const [copied, setCopied] = useState({
-        email: false,
-        phone: false,
-        whatsapp: false
-    })
+  const socialLinks = [
+    { icon: <Linkedin className="w-6 h-6" />, href: "#" },
+    { icon: <Github className="w-6 h-6" />, href: "#" },
+    { icon: <Twitter className="w-6 h-6" />, href: "#" }
+  ]
 
-    // Copy to clipboard function
-    const copyToClipboard = (text, type) => {
-        navigator.clipboard.writeText(text).then(() => {
-            setCopied(prev => ({ ...prev, [type]: true }))
-            setTimeout(() => {
-                setCopied(prev => ({ ...prev, [type]: false }))
-            }, 2000)
-        })
-    }
+  return (
+    <section className="relative min-h-screen bg-white dark:bg-black py-24 overflow-hidden">
+      {/* Background Grid and Orb Effects */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]" />
+      
+      <div className="absolute top-20 left-0 w-72 h-72 bg-purple-400/20 dark:bg-purple-500/30 rounded-full filter blur-[120px]" />
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-400/20 dark:bg-blue-500/30 rounded-full filter blur-[120px]" />
 
-    // Contact Info Card Component
-    const ContactInfoCard = ({ icon, title, value, type }) => (
+      <div className="max-w-7xl mx-auto px-4 relative">
+        {/* Header Section */}
         <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all group"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-20"
         >
-            <div className="flex items-center mb-4">
-                {icon}
-                <h3 className="ml-3 text-xl font-semibold text-gray-800 dark:text-gray-200">
-                    {title}
-                </h3>
-            </div>
-            <div className="flex items-center justify-between">
-                <span className="text-gray-600 dark:text-gray-400 mr-4">{value}</span>
-                <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    onClick={() => copyToClipboard(value, type)}
-                    className="text-primary hover:bg-primary/10"
-                >
-                    {copied[type] ? <Check className="w-5 h-5 text-green-500" /> : <Copy className="w-5 h-5" />}
-                </Button>
-            </div>
+          <div className="flex justify-center mb-4">
+            <Badge className="bg-gray-100 dark:bg-white/10 text-gray-800 dark:text-white backdrop-blur-sm border-0 px-4 py-2 text-sm font-medium">
+              <Sparkles className="w-4 h-4 text-secondary mr-2" />
+              <span className="text-secondary text-center text-sm font-medium">Get in Touch</span>
+            </Badge>
+          </div>
+          
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-600 dark:from-white dark:to-gray-500">
+            Contact Me
+          </h2>
+          
+          <p className="text-gray-600 dark:text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+            Feel free to reach out. I'm always open to discussing new projects or opportunities.
+          </p>
         </motion.div>
-    )
 
-    // Social Links Component
-    const SocialLinks = () => (
-        <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex justify-center space-x-6 mt-8"
-        >
-            {Object.entries(CONTACT_INFO.socialLinks).map(([platform, link]) => {
-                const icons = {
-                    linkedin: <Linkedin className="w-6 h-6 text-blue-600" />,
-                    github: <Github className="w-6 h-6 text-gray-800 dark:text-white" />,
-                    twitter: <Twitter className="w-6 h-6 text-blue-400" />
-                }
-                return (
-                    <a 
-                        key={platform}
-                        href={link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="hover:scale-110 transition-transform"
-                    >
-                        {icons[platform]}
-                    </a>
-                )
-            })}
-        </motion.div>
-    )
-
-    // WhatsApp QR Code Component
-    const WhatsAppQR = () => (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col items-center mt-8"
-        >
-            <div className="p-4 bg-white rounded-xl shadow-lg">
-                <QRCode 
-                    value={`https://wa.me/${CONTACT_INFO.whatsapp.replace(/\D/g, '')}`} 
-                    size={180}
-                    level={'H'}
-                    includeMargin={true}
-                />
-            </div>
-            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
-                Scan to WhatsApp
-            </p>
-        </motion.div>
-    )
-
-    return (
-        <section 
-            ref={ref}
-            className="min-h-screen bg-gray-50 dark:bg-black text-black dark:text-white py-20 px-4 relative overflow-hidden"
-        >
-            {/* Background Effects */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] hidden dark:flex" />
-            
-            <div className="absolute top-20 left-0 w-72 h-72 bg-purple-500/30 rounded-full filter blur-[120px]" />
-            <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-500/30 rounded-full filter blur-[120px]" />
-
-            <div className="max-w-5xl mx-auto relative">
-                {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
-                    <motion.div
-                        initial={{ scale: 0 }}
-                        animate={isInView ? { scale: 1 } : {}}
-                        transition={{ duration: 0.5 }}
-                        className="inline-block"
-                    >
-                        <span className="px-4 py-1.5 rounded-full text-sm font-medium bg-gradient-to-r from-purple-400/10 to-pink-400/10 border border-purple-500/10 mb-4 inline-block">
-                            Get in Touch
-                        </span>
-                    </motion.div>
-
-                    <h3 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-purple-400 via-primary to-secondary text-transparent bg-clip-text">
-                        Contact Me
-                    </h3>
-                </motion.div>
-
-                {/* Contact Information Grid */}
-                <div className="grid md:grid-cols-3 gap-6">
-                    <ContactInfoCard 
-                        icon={<Mail className="w-6 h-6 text-red-500" />}
-                        title="Email"
-                        value={CONTACT_INFO.email}
-                        type="email"
-                    />
-                    <ContactInfoCard 
-                        icon={<Phone className="w-6 h-6 text-green-500" />}
-                        title="Phone"
-                        value={CONTACT_INFO.phone}
-                        type="phone"
-                    />
-                    <ContactInfoCard 
-                        icon={<MessageCircle className="w-6 h-6 text-blue-500" />}
-                        title="WhatsApp"
-                        value={CONTACT_INFO.whatsapp}
-                        type="whatsapp"
-                    />
+        {/* Contact Information Grid */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {contactInfo.map((contact, index) => (
+            <motion.div
+              key={contact.id}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2 }}
+            >
+              <Card className="group relative overflow-hidden bg-gray-50/50 dark:bg-gray-900/50 border-gray-200/50 dark:border-gray-800/50 backdrop-blur-xl p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <span className="text-purple-600 dark:text-purple-400">{contact.icon}</span>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">{contact.title}</h3>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => handleCopy(contact.value, contact.id)}
+                    className="rounded p-1 hover:bg-purple-500/10"
+                  >
+                    {copiedField === contact.id ? (
+                      <CheckCheck className="h-4 w-4 text-green-500" />
+                    ) : (
+                      <Copy className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                    )}
+                  </motion.button>
                 </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{contact.value}</p>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
 
-                {/* Social Links */}
-                <SocialLinks />
+        {/* Social Links */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="flex justify-center gap-8 mb-16"
+        >
+          {socialLinks.map((social, index) => (
+            <motion.a
+              key={index}
+              href={social.href}
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
+              className="rounded-full p-3 text-gray-700 hover:bg-purple-500/10 dark:text-white/80 dark:hover:bg-purple-500/20"
+            >
+              {social.icon}
+            </motion.a>
+          ))}
+        </motion.div>
 
-                {/* WhatsApp QR Code */}
-                <WhatsAppQR />
-            </div>
-        </section>
-    )
+        {/* Contact Form */}
+        <motion.form 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+          className="max-w-2xl mx-auto space-y-6"
+        >
+          <Input
+            placeholder="Full Name"
+            className="bg-gray-50/50 dark:bg-gray-900/50 border-gray-200/50 dark:border-gray-800/50 backdrop-blur-xl"
+          />
+          <Input
+            type="email"
+            placeholder="Email Address"
+            className="bg-gray-50/50 dark:bg-gray-900/50 border-gray-200/50 dark:border-gray-800/50 backdrop-blur-xl"
+          />
+          <Textarea
+            placeholder="Your Message"
+            className="min-h-[150px] bg-gray-50/50 dark:bg-gray-900/50 border-gray-200/50 dark:border-gray-800/50 backdrop-blur-xl"
+          />
+          
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-lg"
+          >
+            <Send className="w-5 h-5" />
+            Send Message
+          </motion.button>
+        </motion.form>
+      </div>
+    </section>
+  )
 }
 
 export default ContactSection

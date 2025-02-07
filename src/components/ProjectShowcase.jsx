@@ -1,7 +1,5 @@
-'use client'
-
-import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import  { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Sparkles, ArrowRight, Github, Globe, ArrowUpRight } from 'lucide-react'
@@ -225,37 +223,9 @@ const ProjectShowcase = () => {
             </motion.div>
           ))}
         </div>
-        
+
       </div>
 
-      <style jsx>{`
-        .shooting-star {
-          position: absolute;
-          width: 2px;
-          height: 2px;
-          background: theme('colors.gray.800');
-          transform: rotate(var(--angle));
-          animation: shoot 3s linear infinite;
-        }
-
-        :global(.dark) .shooting-star {
-          background: white;
-        }
-
-        @keyframes shoot {
-          0% {
-            transform: translateX(0) translateY(0) rotate(var(--angle));
-            opacity: 1;
-          }
-          70% {
-            opacity: 1;
-          }
-          100% {
-            transform: translateX(1000px) translateY(300px) rotate(var(--angle));
-            opacity: 0;
-          }
-        }
-      `}</style>
     </section>
   )
 }
