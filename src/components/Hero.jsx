@@ -140,11 +140,13 @@ export default function Hero() {
             </div> */}
 
                         <div className="flex items-center  gap-4">
-                            <Button className="relative group overflow-hidden bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 btn border-none dark:from-purple-500 dark:to-blue-500 dark:hover:from-purple-600 dark:hover:to-blue-600 transition-colors">
+                            <a href="#collab">
+                            <Button  className="relative group overflow-hidden bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 btn border-none dark:from-purple-500 dark:to-blue-500 dark:hover:from-purple-600 dark:hover:to-blue-600 transition-colors">
                                 <span className="relative z-10">Let's Collaborate</span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-blue-700 dark:from-purple-600 dark:to-blue-600 transition-transform group-hover:translate-y-0 group-hover:opacity-100 opacity-0" />
                                 <div className="absolute inset-0 bg-black dark:bg-white transition-opacity group-hover:opacity-10 opacity-0" />
                             </Button>
+                            </a>
                             <a
                                 href="./resume.pdf"
                                 target="_blank"

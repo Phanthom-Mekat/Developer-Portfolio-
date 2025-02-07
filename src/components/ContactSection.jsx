@@ -47,7 +47,7 @@ const ContactSection = () => {
   ]
 
   return (
-    <section className="relative min-h-screen bg-white dark:bg-black py-24 overflow-hidden">
+    <section id="collab" className="relative min-h-screen bg-white dark:bg-black py-24 overflow-hidden">
       {/* Background Grid and Orb Effects */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]" />
       

@@ -1,7 +1,8 @@
 "use client"
 import { motion } from "framer-motion"
 import { 
-  Mail, MapPin, Linkedin, Github, Twitter, Send, Heart 
+  Mail, MapPin, Linkedin, Github, Twitter, Send, Heart, 
+  ArrowUp
 } from "lucide-react"
 
 const Footer = () => {
@@ -23,7 +24,9 @@ const Footer = () => {
       name: "Twitter" 
     }
   ]
-
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <footer className="relative bg-white dark:bg-black py-16 overflow-hidden">
       {/* Background Grid */}
@@ -117,7 +120,15 @@ const Footer = () => {
             <span>All Rights Reserved</span>
           </div>
         </motion.div>
+        
       </div>
+      <button
+        onClick={scrollToTop}
+        className="fixed bottom-8 right-8 p-2 bg-primary text-white rounded-full shadow-lg hover:bg-primary-focus transition-colors duration-300 ease-in-out transform hover:scale-110"
+        aria-label="Scroll to top"
+      >
+        <ArrowUp className="w-6 h-6 animate-bounce" />
+      </button>
     </footer>
   )
 }

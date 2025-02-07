@@ -112,7 +112,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div> */}
-                    <Link to="/" className="btn btn-ghost text-3xl items-center headerfont">
+                    <Link to="/" className="btn btn-ghost text-xl md:text-3xl  items-center headerfont">
                         <SiAegisauthenticator  size={24} className="text-green-500 bg-gradient-to-r inline-flex mr-1 from-primary/15 to-primary/30 rounded-md px-0 dark:text-secondary dark:bg-gradient-to-r dark:from-secondary/10 dark:to-secondary" />
                         <div>
                             <span className="inline dark:text-white ">JH.</span>
