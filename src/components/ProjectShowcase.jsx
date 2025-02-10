@@ -1,20 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Sparkles, ArrowRight, Github, Globe, ArrowUpRight } from 'lucide-react'
-import { BorderBeam } from './magicui/border-beam'
+import { Sparkles, ArrowRight, Github, Globe, ArrowUpRight } from "lucide-react"
+import { BorderBeam } from "./magicui/border-beam"
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import ProjectDetails from "./ProjectDetails"
+
 
 const ProjectShowcase = () => {
   const [hoveredProject, setHoveredProject] = useState(null)
   const [filteredProjects, setFilteredProjects] = useState([])
   const [selectedTech, setSelectedTech] = useState([])
+  const [selectedProject, setSelectedProject] = useState(null)
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const projects = [
     {
       id: 1,
       title: "Student Food Platform PlateMate",
-      description: "A full-stack web application enabling students to order food from local home-cooks with comprehensive features.",
+      description:
+        "A full-stack web application enabling students to order food from local home-cooks with comprehensive features.",
       image: "./platemates.png",
       tech: ["React", "Node.js", "Express", "Firebase", "MongoDB"],
       features: [
@@ -23,84 +30,97 @@ const ProjectShowcase = () => {
         "Food search and filtering",
         "Meal planning feature",
         "Secure Stripe payment processing",
-        "Admin dashboard"
+        "Admin dashboard",
       ],
       github: "https://github.com/samZero-0/University_Student_Food_Platform_Project",
       live: "https://platemate-3c7a2.web.app/",
       gradient: {
         light: "from-emerald-400 via-green-400 to-lime-400",
-        dark: "from-emerald-500 via-green-500 to-lime-500"
-      }
+        dark: "from-emerald-500 via-green-500 to-lime-500",
+      },
     },
     {
       id: 2,
       title: "StudyCollab",
-      description: "A comprehensive platform for students to submit, view, and track assignments with an intuitive user interface.",
+      description:
+        "A comprehensive platform for students to submit, view, and track assignments with an intuitive user interface.",
       image: "./studycollab.png",
-      tech: ["React", "FramerMotion", "Three.js", "Firebase", "MongoDB", "TailwindCSS", "Shadcn", "Express", "Node.js", 'JWT'],
+      tech: [
+        "React",
+        "FramerMotion",
+        "Three.js",
+        "Firebase",
+        "MongoDB",
+        "TailwindCSS",
+        "Shadcn",
+        "Express",
+        "Node.js",
+        "JWT",
+      ],
       features: [
         "Assignment submission and marking",
         "Submission history tracking",
         "Comprehensive grading system",
         "Student performance leaderboard",
         "Advanced assignment filtering",
-        "Interactive 3D visualization"
+        "Interactive 3D visualization",
       ],
-      github: "https://github.com/programming-hero-web-course2/b10a11-client-side-Phanthom-Mekat/tree/main?tab=readme-ov-file",
+      github:
+        "https://github.com/programming-hero-web-course2/b10a11-client-side-Phanthom-Mekat/tree/main?tab=readme-ov-file",
       live: "https://studycolab.netlify.app/",
       gradient: {
         light: "from-purple-400 via-blue-400 to-cyan-400",
-        dark: "from-purple-500 via-blue-500 to-cyan-500"
-      }
+        dark: "from-purple-500 via-blue-500 to-cyan-500",
+      },
     },
     {
       id: 3,
       title: "Crowdcube: Crowd Funding Application",
-      description: "An innovative crowdfunding platform enabling users to create, manage, and support diverse projects and causes.",
+      description:
+        "An innovative crowdfunding platform enabling users to create, manage, and support diverse projects and causes.",
       image: "./crowdcube.png",
-      tech: ["React", "Express", "MongoDB", "Node.js", "Redux", 'TailwindCSS', 'Firebase'],
+      tech: ["React", "Express", "MongoDB", "Node.js", "Redux", "TailwindCSS", "Firebase"],
       features: [
         "Robust user authentication",
         "Full CRUD campaign management",
         "Donation tracking system",
         "Detailed campaign insights",
         "Personal campaign dashboard",
-        "Secure financial transactions"
+        "Secure financial transactions",
       ],
       github: "https://github.com/programming-hero-web-course2/b10-a10-client-side-Phanthom-Mekat",
       live: "https://crowdcubes.netlify.app/",
       gradient: {
         light: "from-orange-400 via-red-400 to-pink-400",
-        dark: "from-orange-500 via-red-500 to-pink-500"
-      }
-    }
+        dark: "from-orange-500 via-red-500 to-pink-500",
+      },
+    },
   ]
 
   // Compute unique technologies across all projects
-  const allTechnologies = [...new Set(projects.flatMap(project => project.tech))]
+  const allTechnologies = [...new Set(projects.flatMap((project) => project.tech))]
 
   // Filter projects based on selected technologies
   useEffect(() => {
-    const filtered = selectedTech.length === 0 
-      ? projects 
-      : projects.filter(project => 
-          selectedTech.every(tech => project.tech.includes(tech))
-        )
+    const filtered =
+      selectedTech.length === 0
+        ? projects
+        : projects.filter((project) => selectedTech.every((tech) => project.tech.includes(tech)))
     setFilteredProjects(filtered)
-  }, [selectedTech])
+  }, [projects, selectedTech])
 
   // Initialize filtered projects on component mount
   useEffect(() => {
     setFilteredProjects(projects)
-  }, [])
+  }, [projects])
 
   // Toggle technology filter
   const toggleTechFilter = (tech) => {
-    setSelectedTech(prev => 
-      prev.includes(tech) 
-        ? prev.filter(t => t !== tech)
-        : [...prev, tech]
-    )
+    setSelectedTech((prev) => (prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech]))
+  }
+
+  const handleViewDetails = (project) => {
+    setSelectedProject(project)
   }
 
   return (
@@ -124,7 +144,7 @@ const ProjectShowcase = () => {
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
                 animationDelay: `${Math.random() * 5}s`,
-                '--angle': `${Math.random() * 360}deg`
+                "--angle": `${Math.random() * 360}deg`,
               }}
             />
           ))}
@@ -164,14 +184,14 @@ const ProjectShowcase = () => {
 
         {/* Technology Filter */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {allTechnologies.map(tech => (
+          {allTechnologies.map((tech) => (
             <Badge
               key={tech}
               onClick={() => toggleTechFilter(tech)}
               className={`cursor-pointer transition-all duration-300 ${
-                selectedTech.includes(tech) 
-                  ? 'bg-blue-500 text-white' 
-                  : 'bg-gray-100 dark:bg-white/10 text-gray-800 dark:text-white'
+                selectedTech.includes(tech)
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-100 dark:bg-white/10 text-gray-800 dark:text-white"
               } hover:opacity-80`}
             >
               {tech}
@@ -201,9 +221,7 @@ const ProjectShowcase = () => {
                       >
                         {project.title}
                       </motion.h3>
-                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                        {project.description}
-                      </p>
+                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{project.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {project.tech.map((tech, i) => (
                           <Badge
@@ -239,11 +257,14 @@ const ProjectShowcase = () => {
                           className="flex items-center gap-2 text-gray-700/80 dark:text-white/80 hover:text-gray-100 dark:hover:text-white transition-colors btn btn-outline border-primary  "
                         >
                           <Globe className="w-5 h-5" />
-                          <span  >Live Demo
-                          <BorderBeam size={200} duration={15} delay={9} />
+                          <span>
+                            Live Demo
+                            <BorderBeam size={200} duration={15} delay={9} />
                           </span>
-                          
                         </a>
+                        <Button onClick={() => handleViewDetails(project)} className="mt-4 " variant="outline">
+                          View Details
+                        </Button>
                       </div>
                     </div>
 
@@ -251,14 +272,14 @@ const ProjectShowcase = () => {
                     <div className="relative">
                       <div className="relative overflow-hidden rounded-lg aspect-video">
                         <img
-                          src={project.image}
+                          src={project.image || "/placeholder.svg"}
                           alt={project.title}
                           className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                         />
-                        <div 
+                        <div
                           className="absolute inset-0 bg-gradient-to-r opacity-40 dark:opacity-50 transition-opacity duration-700 group-hover:opacity-60 dark:group-hover:opacity-70"
                           style={{
-                            background: `linear-gradient(to right, ${project.gradient.dark.split(' ')[0].replace('from-', '')} 0%, transparent 100%)`
+                            background: `linear-gradient(to right, ${project.gradient.dark.split(" ")[0].replace("from-", "")} 0%, transparent 100%)`,
                           }}
                         />
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 dark:bg-black/20 dark:group-hover:bg-black/40 transition-colors duration-700" />
@@ -280,19 +301,15 @@ const ProjectShowcase = () => {
 
         {/* No Projects Found State */}
         {filteredProjects.length === 0 && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-16"
-          >
-            <p className="text-gray-600 dark:text-gray-400 text-xl">
-              No projects match the selected technologies
-            </p>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
+            <p className="text-gray-600 dark:text-gray-400 text-xl">No projects match the selected technologies</p>
           </motion.div>
         )}
       </div>
+      {selectedProject && <ProjectDetails project={selectedProject} onClose={() => setSelectedProject(null)} />}
     </section>
   )
 }
 
 export default ProjectShowcase
+

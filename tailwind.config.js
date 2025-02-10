@@ -15,9 +15,9 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
-  			primary: '#8b64e6',
-  			accent: '#93c5fd',
-  			secondary: '#45b3fa'
+			primary: '#1abc9c', // New primary color
+			accent: '#ff6347', // New accent color
+			secondary: '#9b59b6', // New secondary color
   		},
   		animation: {
   			'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear'
