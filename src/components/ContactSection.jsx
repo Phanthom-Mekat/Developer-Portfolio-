@@ -7,7 +7,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { 
   Mail, Phone, MessageCircle, Linkedin, Github, Twitter, 
-  Copy, CheckCheck, Sparkles, Send 
+  Copy, CheckCheck, Sparkles, Send, 
+  Facebook
 } from "lucide-react"
 
 const ContactSection = () => {
@@ -40,10 +41,11 @@ const ContactSection = () => {
     }
   ]
 
+
   const socialLinks = [
-    { icon: <Linkedin className="w-6 h-6" />, href: "#" },
-    { icon: <Github className="w-6 h-6" />, href: "#" },
-    { icon: <Twitter className="w-6 h-6" />, href: "#" }
+    { icon: <Linkedin className="w-6 h-6" />, href: "https://www.linkedin.com/in/jahidul-hossain-mekat-157874228/" },
+    { icon: <Github className="w-6 h-6" />, href: "https://github.com/phanthom-Mekat" },
+    { icon: <Facebook className="w-6 h-6" />, href: "https://www.facebook.com/buletboy.mekat" }
   ]
 
   return (
@@ -122,6 +124,7 @@ const ContactSection = () => {
             <motion.a
               key={index}
               href={social.href}
+               target="_blank"
               whileHover={{ scale: 1.2, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
               className="rounded-full p-3 text-gray-700 hover:bg-purple-500/10 dark:text-white/80 dark:hover:bg-purple-500/20"

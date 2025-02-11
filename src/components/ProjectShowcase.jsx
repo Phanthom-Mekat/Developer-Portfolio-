@@ -66,7 +66,7 @@ const ProjectShowcase = () => {
         "Interactive 3D visualization",
       ],
       github:
-        "https://github.com/programming-hero-web-course2/b10a11-client-side-Phanthom-Mekat/tree/main?tab=readme-ov-file",
+        "https://github.com/Phanthom-Mekat/StudyCollab-Collaborative-Learning-Platform-11-client",
       live: "https://studycolab.netlify.app/",
       gradient: {
         light: "from-purple-400 via-blue-400 to-cyan-400",
@@ -88,7 +88,7 @@ const ProjectShowcase = () => {
         "Personal campaign dashboard",
         "Secure financial transactions",
       ],
-      github: "https://github.com/programming-hero-web-course2/b10-a10-client-side-Phanthom-Mekat",
+      github: "https://github.com/Phanthom-Mekat/Crowdcube-A-Crowd-Funding-Application-10-client",
       live: "https://crowdcubes.netlify.app/",
       gradient: {
         light: "from-orange-400 via-red-400 to-pink-400",
